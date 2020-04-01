@@ -15,10 +15,10 @@
         <a href="#"><i class="fa fa-image fa-fw"></i> Holerites</a>
     </li>
     <li>
-        <a href="#"><i class="fa fa-image fa-fw"></i>Documentos</a>
+        <a href="#"><i class="fa fa-file fa-fw"></i>Documentos</a>
     </li>    
     <li>
-        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+        <a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
     </li>
         </ul>
     </li>
