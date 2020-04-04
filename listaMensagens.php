@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Administração</title>
+    <title>Mensagens</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
@@ -49,7 +49,7 @@
         
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Index</h1>
+                    <h1 class="page-header">Mensagens</h1>
                 </div>
             </div>
             <!-- /.row -->
@@ -60,7 +60,41 @@
             </div>
             <!-- /.row -->
             <div class="row">
-              <!-- Aqui fica o corpo da pagina -->
+                <button type="button" class="btn btn-outline btn-primary" onclick="window.location.href='AdicionaMensagem.php'">Adicionar</button>
+                <div class="table-responsive">
+                    <p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Titulo</th>
+                                <th>Data</th>
+                                    <th align="center">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            require("conexao.php");
+                            $query = "SELECT * FROM tb_mensagem;";
+                            $result = mysqli_query($conn, $query);
+                            if(mysqli_num_rows($result) > 0){
+                                while($item=mysqli_fetch_array($result)){
+                                    echo'<tr>
+                                        <td>'.$item['titulo'].'</td>
+                                        <td>'.date("d/m/Y H:m:s", strtotime($item['data_cadastro'])).'</td>
+                                        <td>
+                                            <a href="EditaMensagem.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
+                                            <a href="deleta.php?id='.$item['id'].'&tabela=mensagem" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
+                                        </td>
+                                    </tr>';
+                                }
+                            }else{
+                                echo"<tr><td>Nenhum registro encontrado...</td><td></td><td></td><td></td>";
+                            }
+
+                            ?>    
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

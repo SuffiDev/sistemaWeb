@@ -35,7 +35,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        
+                        <h3 class="panel-title" style="text-align:center;"><img style="width:200px;" src="imgs/logoSmartQuimica.png"></h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" action="post_login.php" method="post">

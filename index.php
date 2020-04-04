@@ -61,8 +61,37 @@
             </div>
             <!-- /.row -->
             <div class="row">
-              <!-- Aqui fica o corpo da pagina -->
-            </div>
+            <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Mensagens não lidas
+                </div>
+                <div class="panel-body">
+                <?php  
+                    require("conexao.php");
+                    $query = "SELECT SUBSTRING(corpo, 1, 20) as corpo, titulo,tb_mensagem.id, data_cadastro FROM tb_mensagem INNER JOIN tb_leitura ON (tb_leitura.id_mensagem = tb_mensagem.id) WHERE tb_leitura.id_usuario = '".$_SESSION["logado"]."' AND lido = '0' order by data_cadastro DESC limit 5";
+                    $result = mysqli_query($conn,$query);
+                    if(mysqli_num_rows($result) > 0){
+                        while($item=mysqli_fetch_array($result)){
+                            echo '<div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-comment fa-fw"></i> '.$item['corpo'].'
+                                        <span class="pull-right text-muted small"><em>'.date("d/m/Y H:m:s", strtotime($item['data_cadastro'])).'</em>
+                                        </span>
+                                    </a>                                    
+                                </div>'; 
+                                
+                        }
+                        echo '<a href="#" class="btn btn-default btn-block">Ver todas as mensagens</a>';
+                    }else{
+                        echo '<p  class="btn btn-default btn-block">Nenhuma mesagem encontrada</a>';
+                    }
+            ?>            
+                    
+                    
+                </div>
+            </div>                    
+        </div>
         </div>
 
     </div>
