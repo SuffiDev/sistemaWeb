@@ -33,8 +33,7 @@
                 }else{
                     echo '<li>
                             <p class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
+                                <strong>Nenhuma mensagem encontrada</strong>
                             </p>
                         </li>';
                 }
