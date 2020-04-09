@@ -26,6 +26,7 @@
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
     <script src="dist/js/sb-admin-2.js"></script>
+    <script src="js/maskInput.js"></script>
 </head>
 
 <body>
@@ -76,5 +77,8 @@ $('#btnLogin').click(function(){
     alert("Preencha corretamente o E-Mail e a Senha");
   }
 });
+$(document).ready(function(){
+    $('#usuario').mask('000.000.000-00')
+})
 </script>
 </html>

@@ -24,7 +24,7 @@
 
 		$result = mysqli_query($conn, $query);
 
-		header("Location: ListaHolerite.php");
+		header("Location: ListaHolerites.php");
 	}
 	elseif($tabela == 'documento'){
 		$query = "DELETE FROM tb_documento WHERE id= '".$id."'";

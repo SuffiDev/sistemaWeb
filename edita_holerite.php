@@ -17,6 +17,10 @@
     if($info['extension'] != null){
         $nome_arq = $mes_ref . $ano_ref . $item['usuario'];
         $ext = $info['extension']; //pegando a extensão do arquivo
+        //Caso não exista o arquivo, eu crio ele 
+        if (!file_exists("holerites/".$item['usuario'])) {
+            mkdir("holerites/".$item['usuario'], 0777, true);
+        }
         $target = "holerites/".$item['usuario']."/".$nome_arq.".".$ext; 
         move_uploaded_file( $_FILES['arquivo']['tmp_name'], $target);
     }

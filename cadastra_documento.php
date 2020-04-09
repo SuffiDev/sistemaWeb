@@ -9,7 +9,7 @@
     $info = pathinfo($_FILES['arquivo']['name']);
     $ext = $info['extension']; // get the extension of the file
     $replace_text = preg_replace('/[ -_]/','',$nome);
-    $target = "/var/www/html/arquivos/".$replace_text.".".$ext; 
+    $target = "documentos/".$replace_text.".".$ext; 
     move_uploaded_file( $_FILES['arquivo']['tmp_name'], $target);
 
     //Adicionando no banco

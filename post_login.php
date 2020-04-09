@@ -1,10 +1,9 @@
 <?php
 require("conexao.php");
-$usuario = $_POST["usuario"];
+$usuario = preg_replace('/[ .-]/','',$_POST['usuario']);
 $senha = $_POST["password"];
 $tipo = $_POST["tipo_login"];
 $busca = "SELECT * FROM tb_usuario WHERE usuario='".$usuario."' AND senha='".$senha."' AND tipo='".$tipo."' limit 1;";
-
 $result = mysqli_query($conn, $busca);
 if (mysqli_num_rows($result) > 0) {
 	session_cache_expire(30);
@@ -29,6 +28,6 @@ if (mysqli_num_rows($result) > 0) {
         header("Location: indexAdmin.php");
     }
 }else{
-  header("Location: login.php?retorno=usuario_ou_senha_invalidos");
+  //header("Location: login.php?retorno=usuario_ou_senha_invalidos");
 }
 ?>

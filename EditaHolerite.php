@@ -133,7 +133,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Ano</label>
-                                <input type="text" value="'.$item['ano_referencia'].'" class="form-control" name="ano" style="width:auto !important;" id="ano" placeholder="Ex: 2020">
+                                <select class="form-control"  name="ano" style="width:auto !important;" id="ano" >
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                    <option value="2027">2027</option>
+                                    <option value="2028">2028</option>
+                                    <option value="2029">2029</option>
+                                    <option value="2030">2030</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Arquivo</label>
@@ -165,7 +177,16 @@ $('#btn_cadastra').click(function(){
     if($("#colaborador").val() == "" || $('#mes_ref').val() == "" || $('#ano').val() == ""){
         alert("Preencha todos os campos!");
     }else{
-        $('form').submit();        
+        if($('#aquivo').val() != ''){
+            let nome_arquivo = $('#arquivo').val();
+            let nome_splitado = nome_arquivo.split('.')[1];
+            if (nome_splitado == 'pdf')
+                $('form').submit();    
+            else
+                alert("Selecione um documento PDF válido!")
+        }else{
+            $('form').submit();  
+        }      
     }
 });
 $(function() {

@@ -16,6 +16,10 @@
     $nome_arq = $mes_ref . $ano_ref . $item['usuario'];
     $ext = $info['extension']; //pegando a extensão do arquivo
     $target = "holerites/".$item['usuario']."/".$nome_arq.".".$ext; 
+    //Cria o diretorio caso não exista
+    if (!file_exists("holerites/".$item['usuario'])) {
+        mkdir("holerites/".$item['usuario'], 0777, true);
+    }
     move_uploaded_file( $_FILES['arquivo']['tmp_name'], $target);
 
     //Adicionando no banco

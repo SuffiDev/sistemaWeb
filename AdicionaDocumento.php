@@ -99,7 +99,13 @@ $('#btn_cadastra').click(function(){
     if($("#titulo").val() == "" || $("#arquivo").val() == ''){
         alert("Preencha todos os campos!");
     }else{
-        $('form').submit();        
+        let nome_arquivo = $('#arquivo').val();
+        let nome_splitado = nome_arquivo.split('.')[1];
+
+        if (nome_splitado == 'pdf' || nome_splitado == 'doc' || nome_splitado == 'docx')
+            $('form').submit();    
+        else
+            alert("Selecione um documento PDF ou World válido!")
     }
 });
 $(function() {

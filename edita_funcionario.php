@@ -3,7 +3,7 @@
 	require("conexao.php");
 	$nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $usuario = $_POST['usuario'];
+    $usuario = preg_replace('/[ .-]/','', $_POST['usuario']);
     $senha = $_POST['senha'];
     $tipo = $_POST['tipo'];
     $id = $_SESSION['id'];

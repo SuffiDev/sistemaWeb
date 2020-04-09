@@ -75,7 +75,7 @@
                         <tbody>
                         <?php 
                             require("conexao.php");
-                            $query = "SELECT holerite.id_usuario,holerite.id, holerite.mes_referencia, holerite.ano_referencia, usuario.nome FROM tb_holerite holerite INNER JOIN tb_usuario usuario ON (holerite.id_usuario = usuario.id);";
+                            $query = "SELECT holerite.id_usuario,holerite.id,holerite.caminho_documento, holerite.mes_referencia, holerite.ano_referencia, usuario.nome FROM tb_holerite holerite INNER JOIN tb_usuario usuario ON (holerite.id_usuario = usuario.id);";
                             $result = mysqli_query($conn, $query);
                             if(mysqli_num_rows($result) > 0){
                                 while($item=mysqli_fetch_array($result)){
@@ -109,8 +109,9 @@
                                         <td>'.$mes_ref.'</td>
                                         <td>'.$item['ano_referencia'].'</td>
                                         <td>
-                                            <a href="EditaHolerite.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
-                                            <a href="deleta.php?id='.$item['id'].'&tabela=holerite" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
+                                            <a target="_blank" href="'.$item['caminho_documento'].'" id="visualizar" ><p class="fa fa-eye"></p> Visualizar</a>&nbsp;
+                                            <a style="color:green" href="EditaHolerite.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
+                                            <a style="color:red" href="deleta.php?id='.$item['id'].'&tabela=holerite" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
                                         </td>
                                     </tr>';
                                 }

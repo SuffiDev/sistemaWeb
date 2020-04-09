@@ -27,6 +27,7 @@
     <script src="vendor/morrisjs/morris.min.js"></script>
     <script src="data/morris-data.js"></script>
     <script src="dist/js/sb-admin-2.js"></script>
+    <script src="js/maskInput.js"></script>
 </head>
 <body>
 
@@ -75,8 +76,8 @@
                                 <input type="text" class="form-control" name="sobrenome" style="width:auto !important;" id="sobrenome" placeholder="Sobrenome:">
                             </div>
                             <div class="form-group">
-                                <label>Usuario</label>
-                                <input type="text" class="form-control" name="usuario" style="width:auto !important;" id="usuario" placeholder="Usuario:">
+                                <label>CPF</label>
+                                <input type="text" class="form-control" name="usuario" style="width:auto !important;" id="usuario" placeholder="CPF:">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
@@ -114,4 +115,7 @@ $('#btn_cadastra').click(function(){
         $('#form_funcionario').submit();
     }
 });
+$(document).ready(function(){
+    $('#usuario').mask('000.000.000-00')
+})
 </script>

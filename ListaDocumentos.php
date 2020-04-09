@@ -80,8 +80,9 @@
                                     echo'<tr>
                                         <td>'.$item['nome'].'</td>
                                         <td>
-                                            <a href="EditaDocumento.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
-                                            <a href="deleta.php?id='.$item['id'].'&tabela=documento" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
+                                            <a href="'.$item['caminho_arquivo'].'" id="visualizar" ><p class="fa fa-eye"></p> Visualizar</a>&nbsp;
+                                            <a style="color:green" href="EditaDocumento.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
+                                            <a style="color:red" href="deleta.php?id='.$item['id'].'&tabela=documento" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
                                         </td>
                                     </tr>';
                                 }
