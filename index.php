@@ -61,40 +61,110 @@
             </div>
             <!-- /.row -->
             <div class="row">
-            <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Mensagens não lidas
-                </div>
-                <div class="panel-body">
-                <?php  
-                    require("conexao.php");
-                    $query = "SELECT SUBSTRING(corpo, 1, 20) as corpo, titulo,tb_mensagem.id, data_cadastro FROM tb_mensagem INNER JOIN tb_leitura ON (tb_leitura.id_mensagem = tb_mensagem.id) WHERE tb_leitura.id_usuario = '".$_SESSION["logado"]."' AND lido = '0' order by data_cadastro DESC limit 5";
-                    $result = mysqli_query($conn,$query);
-                    if(mysqli_num_rows($result) > 0){
-                        while($item=mysqli_fetch_array($result)){
-                            echo '<div class="list-group">
-                                    <a href="#" class="list-group-item">
-                                        <i class="fa fa-comment fa-fw"></i> '.$item['corpo'].'
-                                        <span class="pull-right text-muted small"><em>'.date("d/m/Y H:m:s", strtotime($item['data_cadastro'])).'</em>
-                                        </span>
-                                    </a>                                    
-                                </div>'; 
-                                
-                        }
-                        echo '<a href="#" class="btn btn-default btn-block">Ver todas as mensagens</a>';
-                    }else{
-                        echo '<p  class="">Nenhuma mesagem encontrada</a><p>
-                                <a href="#" class="btn btn-default btn-block">Ver todas as mensagens</a>';
-                    }
-            ?>            
-                    
-                    
-                </div>
-            </div>                    
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Mensagens não lidas
+                        </div>
+                        <div class="panel-body">
+                            <?php  
+                                require("conexao.php");
+                                $query = "SELECT SUBSTRING(corpo, 1, 20) as corpo, titulo,tb_mensagem.id, data_cadastro FROM tb_mensagem INNER JOIN tb_leitura ON (tb_leitura.id_mensagem = tb_mensagem.id) WHERE tb_leitura.id_usuario = '".$_SESSION["id"]."' AND lido = '0' order by data_cadastro DESC limit 5";
+                                $result = mysqli_query($conn,$query);
+                                if(mysqli_num_rows($result) > 0){
+                                    while($item=mysqli_fetch_array($result)){
+                                        echo '<div class="list-group">
+                                                <a class="list-group-item">
+                                                    <i class="fa fa-comment fa-fw"></i> '.$item['corpo'].'
+                                                    <span class="pull-right text-muted small"><em>'.date("d/m/Y H:m:s", strtotime($item['data_cadastro'])).'</em>
+                                                    </span>
+                                                </a>                                    
+                                            </div>'; 
+                                            
+                                    }
+                                    echo '<a href="MinhasMensagens.php" class="btn btn-default btn-block">Ver todas as mensagens</a>';
+                                }else{
+                                    echo '<p  class="">Nenhuma mesagem encontrada</a><p>
+                                            <a href="MinhasMensagens.php" class="btn btn-default btn-block">Ver todas as mensagens</a>';
+                                }
+                            ?>            
+                            
+                            
+                        </div>
+                    </div>     
+                </div>   
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Ultimos Holerites
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr >
+                                            <th>Mês</th>
+                                            <th>Ano</th>
+                                            <th>#</th>
+                                        </tr>  
+                                    </thead>
+                                    <tbody>
+                                        <?php  
+                                            require("conexao.php");
+                                            $query = "select * from tb_holerite where id_usuario = '".$_SESSION['id']."' order by id DESC limit 5";
+                                            $result = mysqli_query($conn,$query);
+                                            if(mysqli_num_rows($result) > 0){
+                                                while($item=mysqli_fetch_array($result)){
+                                                    $i = $item['mes_referencia'];
+                                                    $mes = '';
+                                                    if($i == 1)
+                                                        $mes = 'Janeiro';
+                                                    elseif($i == 2)
+                                                        $mes = 'Fevereiro';
+                                                    elseif($i == 3)
+                                                        $mes = 'Março';
+                                                    elseif($i == 4)
+                                                        $mes = 'Abril';
+                                                    elseif($i == 5)
+                                                        $mes = 'Maio';
+                                                    elseif($i == 6)
+                                                        $mes = 'Junho';
+                                                    elseif($i == 7)
+                                                        $mes = 'Julho';
+                                                    elseif($i == 8)
+                                                        $mes = 'Agosto';
+                                                    elseif($i == 9)
+                                                        $mes = 'Setembro';
+                                                    elseif($i == 10)
+                                                        $mes = 'Outubro';
+                                                    elseif($i == 11)
+                                                        $mes = 'Novembro';
+                                                    elseif($i == 12)
+                                                        $mes = 'Dezembro';
+                                                    echo '<tr>
+                                                            <td>'.$mes.'</td>
+                                                            <td>'.$item['ano_referencia'].'</td>
+                                                            <td><a target="_blank" href="'.$item['caminho_documento'].'" id="visualizar" ><p class="fa fa-eye"></p> Visualizar</a>&nbsp;</td>
+                                                        </tr>'; 
+                                                        
+                                                }
+                                            }else{
+                                                echo '<tr>
+                                                        <td>Nenhum registro encontrado</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>';
+                                            }
+                                        ?>           
+                                        
+                                    </tbody>
+                                </table>
+                            </div>   
+                        </div>
+                    </div>     
+                </div>   
+            </div> 
         </div>
-        </div>
-
     </div>
 </body>
 

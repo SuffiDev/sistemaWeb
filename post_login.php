@@ -28,6 +28,6 @@ if (mysqli_num_rows($result) > 0) {
         header("Location: indexAdmin.php");
     }
 }else{
-  //header("Location: login.php?retorno=usuario_ou_senha_invalidos");
+  header("Location: login.php?retorno=usuario_ou_senha_invalidos");
 }
 ?>

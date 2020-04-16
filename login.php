@@ -42,7 +42,7 @@
                         <form role="form" action="post_login.php" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usuario" name="usuario" id="usuario" autofocus>
+                                    <input class="form-control" placeholder="CPF" name="usuario" id="usuario" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Senha" name="password" id="senha" type="password" value="">

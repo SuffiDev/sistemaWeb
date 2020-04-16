@@ -10,13 +10,13 @@
         <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Index</a>
     </li>
     <li>
-        <a href="#"><i class="fa fa-comments fa-fw"></i> Mensagens</a>
+        <a href="MinhasMensagens.php"><i class="fa fa-comments fa-fw"></i> Mensagens</a>
     </li>
     <li>
-        <a href="#"><i class="fa fa-image fa-fw"></i> Holerites</a>
+        <a href="BuscaHolerites.php"><i class="fa fa-image fa-fw"></i> Holerites</a>
     </li>
     <li>
-        <a href="#"><i class="fa fa-file fa-fw"></i>Documentos</a>
+        <a href="MeusDocumentos.php"><i class="fa fa-file fa-fw"></i>Documentos</a>
     </li>    
     <li>
         <a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
