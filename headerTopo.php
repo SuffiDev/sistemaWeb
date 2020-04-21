@@ -47,7 +47,7 @@
             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> Seu Perfil</a>
+            <li><a href="MeuPerfil.php"><i class="fa fa-user fa-fw"></i> Seu Perfil</a>
             </li>
             <li class="divider"></li>
             <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>

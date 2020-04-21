@@ -8,7 +8,7 @@ $banco = "smartqui_rh";
 //$usuario = "matheus";
 //$senha = "123456";
 //$banco = "sistema_web";
-//$conn = mysqli_connect($endereco,$usuario,$senha,$banco);
+$conn = mysqli_connect($endereco,$usuario,$senha,$banco);
 
 // Checa a conexão
 if (mysqli_connect_errno())
