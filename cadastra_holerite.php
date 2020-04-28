@@ -13,7 +13,8 @@
     $item = mysqli_fetch_assoc($result);
 
     $info = pathinfo($_FILES['arquivo']['name']);
-    $nome_arq = $mes_ref . $ano_ref . $item['usuario'];
+    $hora = date("mdYhis", time());
+    $nome_arq = $hora . $mes_ref . $ano_ref . $item['usuario'];
     $ext = $info['extension']; //pegando a extensão do arquivo
     $target = "holerites/".$item['usuario']."/".$nome_arq.".".$ext; 
     //Cria o diretorio caso não exista

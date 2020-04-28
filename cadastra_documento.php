@@ -13,9 +13,13 @@
     move_uploaded_file( $_FILES['arquivo']['tmp_name'], $target);
 
     //Adicionando no banco
-    $query = "INSERT INTO tb_documento (nome, caminho_arquivo, data_cadastro) VALUES ('".$nome."','".$target."','".$dataAgora."');";
-    $result = mysqli_query($conn, $query);	
-    $idMensagem = mysqli_insert_id($conn);
+
+    $colaboradores = $_POST['colaborador'];
+    foreach ($colaboradores as $item){
+        $query = "INSERT INTO tb_documento (nome, caminho_arquivo, data_cadastro, id_usuario) VALUES ('".$nome."','".$target."','".$dataAgora."','".$item."');";
+        echo $query;
+        $result = mysqli_query($conn, $query);	
+    }
     //header("Location: ListaHolerites.php");
     
 ?>

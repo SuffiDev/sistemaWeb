@@ -100,4 +100,10 @@ $('#ano').change(function(){
         $("#resultFiltro").html(result);
     }});
 })
+
+$(document).ready(function(){
+    $.ajax({url: "resultHolerites.php?ano="+$('#ano').val(), success: function(result){
+        $("#resultFiltro").html(result);
+    }});
+})
 </script>

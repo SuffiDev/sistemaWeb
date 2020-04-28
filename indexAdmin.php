@@ -4,6 +4,13 @@
  if(!isset($_SESSION["logado"]) || $_SESSION["logado"] != TRUE || $_SESSION['ADMIN'] == TRUE){
    header("Location: login.php");
  }
+ if($_SESSION['primeiro_login'])
+    echo '<script>
+            var r = confirm("Bem-Vindo!\nSua senha padrão ainda não foi alterada! Clique aqui para alterar");
+            if (r == true) {
+                window.location.href = "MeuPerfil.php";
+            } 
+        </script>'
 ?>
 <!DOCTYPE html>
 

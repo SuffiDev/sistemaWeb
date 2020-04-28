@@ -27,6 +27,8 @@
     <script src="vendor/morrisjs/morris.min.js"></script>
     <script src="data/morris-data.js"></script>
     <script src="dist/js/sb-admin-2.js"></script>
+    <script src="js/datatables.js"></script>
+    <link href="dist/css/datatables.css" rel="stylesheet">
 </head>
 <body>
 
@@ -63,25 +65,26 @@
                 <button type="button" class="btn btn-outline btn-primary" onclick="window.location.href='AdicionaDocumento.php'">Adicionar</button>
                 <div class="table-responsive">
                     <p>
-                    <table class="table table-hover">
+                    <table id="myTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Documento</th>
-                                <th align="center">#</th>
+                                <th>Usuario</th>
+                                <th align="center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php 
                             require("conexao.php");
-                            $query = "SELECT * FROM tb_documento";
+                            $query = "SELECT documento.nome as titulo, usuario.nome, documento.id, documento.caminho_arquivo FROM tb_documento documento INNER JOIN tb_usuario usuario ON (usuario.id = documento.id_usuario)";
                             $result = mysqli_query($conn, $query);
                             if(mysqli_num_rows($result) > 0){
                                 while($item=mysqli_fetch_array($result)){                          
                                     echo'<tr>
+                                        <td>'.$item['titulo'].'</td>
                                         <td>'.$item['nome'].'</td>
                                         <td>
                                             <a target="_blank" href="'.$item['caminho_arquivo'].'" id="visualizar" ><p class="fa fa-eye"></p> Visualizar</a>&nbsp;
-                                            <a style="color:green" href="EditaDocumento.php?id='.$item['id'].'" id="editar" ><p class="fa fa-edit"></p> Editar</a>&nbsp;
                                             <a style="color:red" href="deleta.php?id='.$item['id'].'&tabela=documento" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
                                         </td>
                                     </tr>';
@@ -101,3 +104,27 @@
 </body>
 
 </html>
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable({
+        "aaSorting": [[ '1', "asc" ]],
+        "iDisplayLength":'10',
+        "oLanguage": {
+            "sSearch": "Busca:",
+            "sLengthMenu": "Listar _MENU_ registros por pagina",
+            "sZeroRecords": "Nada encontrado - =/",
+            "sInfo": "Listando _START_ a _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Listando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(_MAX_ registros filtrados)",
+            "oPaginate": {
+                "sFirst":    "Primeiro",
+                "sPrevious": "Anterior",
+                "sNext":     "Próximo",
+                "sLast":     "Último"
+            }
+        }
+    } );
+
+});
+</script>

@@ -21,6 +21,8 @@
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/datatables.js"></script>
+    <link href="dist/css/datatables.css" rel="stylesheet">
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
     <script src="vendor/raphael/raphael.min.js"></script>
@@ -62,17 +64,17 @@
             <div class="row">
                 <div class="table-responsive">
                     <p>
-                    <table class="table table-hover">
+                    <table id="myTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                    <th align="center">#</th>
+                                    <th align="center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php 
                             require("conexao.php");
-                            $query = "SELECT * FROM tb_documento order by id ASC;";
+                            $query = "SELECT * FROM tb_documento WHERE id_usuario = '".$_SESSION['id']."' order by id ASC;";
                             $result = mysqli_query($conn, $query);
                             if(mysqli_num_rows($result) > 0){
                                 while($item=mysqli_fetch_array($result)){
@@ -101,6 +103,27 @@
 
 </html>
 <script>
+$(document).ready( function () {
+    $('#myTable').DataTable({
+        "aaSorting": [[ '1', "asc" ]],
+        "iDisplayLength":'10',
+        "oLanguage": {
+            "sSearch": "Busca:",
+            "sLengthMenu": "Listar _MENU_ registros por pagina",
+            "sZeroRecords": "Nada encontrado - =/",
+            "sInfo": "Listando _START_ a _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Listando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(_MAX_ registros filtrados)",
+            "oPaginate": {
+                "sFirst":    "Primeiro",
+                "sPrevious": "Anterior",
+                "sNext":     "Próximo",
+                "sLast":     "Último"
+            }
+        }
+    } );
+
+});
 function modalMensagem(id){
     alert('entrou')
     $.ajax({url: "DetalhesModal.php?id="+id, success: function(result){

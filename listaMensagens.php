@@ -27,6 +27,8 @@
     <script src="vendor/morrisjs/morris.min.js"></script>
     <script src="data/morris-data.js"></script>
     <script src="dist/js/sb-admin-2.js"></script>
+    <script src="js/datatables.js"></script>
+    <link href="dist/css/datatables.css" rel="stylesheet">
 </head>
 <body>
 
@@ -63,7 +65,7 @@
                 <button type="button" class="btn btn-outline btn-primary" onclick="window.location.href='AdicionaMensagem.php'">Adicionar</button>
                 <div class="table-responsive">
                     <p>
-                    <table class="table table-hover">
+                    <table id="myTable" class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Titulo</th>
@@ -102,3 +104,27 @@
 </body>
 
 </html>
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable({
+        "aaSorting": [[ '1', "asc" ]],
+        "iDisplayLength":'10',
+        "oLanguage": {
+            "sSearch": "Busca:",
+            "sLengthMenu": "Listar _MENU_ registros por pagina",
+            "sZeroRecords": "Nada encontrado - =/",
+            "sInfo": "Listando _START_ a _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Listando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(_MAX_ registros filtrados)",
+            "oPaginate": {
+                "sFirst":    "Primeiro",
+                "sPrevious": "Anterior",
+                "sNext":     "Próximo",
+                "sLast":     "Último"
+            }
+        }
+    } );
+
+});
+</script>

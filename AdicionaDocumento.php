@@ -72,6 +72,18 @@
                                     <input type="text" class="form-control" name="documento" style="width:auto !important;" id="documento" placeholder="Titulo do Documento">                                    
                                 </div>
                                 <div class="form-group">
+                                    <label>Colaborador</label>
+                                    <select class="form-control" multiple="multiple"  name="colaborador[]" style="width:auto !important;" id="colaborador" >                                    
+                                    <?php
+                                        $colaboradores = "SELECT * FROM tb_usuario where tipo= 'colaborador'";
+                                        $result = mysqli_query($conn,$colaboradores);
+                                        while($item=mysqli_fetch_array($result)){
+                                            echo "<option value='".$item['id']."'>".$item['nome']."</option>";
+                                        }
+                                    ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Arquivo</label>
                                     <input type="file" class="form-control" name="arquivo" style="width:auto !important;" id="arquivo" placeholder="Senha:">
                                 </div>   

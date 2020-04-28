@@ -7,7 +7,7 @@
     $usuario = preg_replace('/[ .-]/','', $_POST['usuario']);
     $senha = $_POST['senha'];
     $tipo = $_POST['tipo'];
-    $query = "INSERT INTO tb_usuario (nome,sobre_nome,usuario,senha,tipo) VALUES ('".$nome."','".$sobrenome."','".$usuarioNumero."','".$senha."','".$tipo."');";
+    $query = "INSERT INTO tb_usuario (nome,sobre_nome,usuario,senha,tipo,primeiro_login) VALUES ('".$nome."','".$sobrenome."','".$usuarioNumero."','".$senha."','".$tipo."','0');";
     $result = mysqli_query($conn, $query);	
     header("Location: ListaFuncionarios.php");
 ?>

@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Senha</label>
-                                        <input type="text" value="'.$item['senha'].'" class="form-control" name="senha" style="width:auto !important;" id="senha" placeholder="Digite a Senha">
+                                        <input type="text" value="'.$item['senha'].'" class="form-control" name="senha" style="width:auto !important;" id="senha" placeholder="Digite a Senha" maxlength="8">
                                     </div>
                                     
                                     <div style="float:left;">
