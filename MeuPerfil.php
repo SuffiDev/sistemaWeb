@@ -1,7 +1,7 @@
 <?php
  //Verificação da sessão
  session_start();
- if(!isset($_SESSION["logado"]) || $_SESSION["logado"] != TRUE || $_SESSION['ADMIN'] == TRUE){
+ if(!isset($_SESSION["logado"]) || $_SESSION["logado"] != 1){
    header("Location: login.php");
  }
 ?>
