@@ -9,7 +9,7 @@ if (mysqli_num_rows($result) > 0) {
 	session_cache_expire(30);
 	while($item=mysqli_fetch_array($result)){
 		session_start();
-        $_SESSION['logado'] = TRUE;
+        $_SESSION['logado'] = 1;
         $tipo_login;
         if ($tipo == 'admin'){
             $tipo_login = 1;
