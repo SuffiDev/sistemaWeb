@@ -11,8 +11,8 @@
     //Após salvar a mensagem eu vou distribui-la para os colaboradores
     $colaboradores = $_POST['colaboradores'];
     foreach ($colaboradores as $item){
-        $query = "INSERT INTO tb_leitura(id_mensagem,id_usuario, lido) VALUES ('".$idMensagem."','".$item."','0')";
-        mysqli_query($conn, $query);
+        $queryLeitura = "INSERT INTO tb_leitura(id_mensagem,id_usuario, lido) VALUES ('".$idMensagem."','".$item."','0')";
+        mysqli_query($conn, $queryLeitura);
     }
     header("Location: listaMensagens.php");
 ?>
