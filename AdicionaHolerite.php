@@ -30,6 +30,7 @@
     <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script src="js/maskInput.js"></script>    
+    <script src="js/jsForm.js"></script>    
 
     <!-- Page-Level Plugin Scripts - Blank -->
 
@@ -48,6 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <?php echo '<a class="navbar-brand">Olá, '.$_SESSION['nome'].' </a>' ?>
             </div>
             <!-- /.navbar-header -->
 

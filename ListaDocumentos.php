@@ -48,6 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <?php echo '<a class="navbar-brand">Olá, '.$_SESSION['nome'].' </a>' ?>
             </div>
             <!-- /.navbar-header -->
 
@@ -107,7 +108,7 @@
                                         <td>'.$item['nome'].'</td>
                                         <td>
                                             <a target="_blank" href="'.$item['caminho_arquivo'].'" id="visualizar" ><p class="fa fa-eye"></p> Visualizar</a>&nbsp;
-                                            <a style="color:red" href="deleta.php?id='.$item['id'].'&tabela=documento" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
+                                            <a style="color:red" href="javascript:deleta('.$item['id'].')" id="excluir" ><p class="fa fa-trash"></p> Excluir</a>
                                         </td>
                                     </tr>';
                                 }
@@ -149,4 +150,10 @@ $(document).ready( function () {
     } );
 
 });
+function deleta(id){
+    var r = confirm("Deseja mesmo remover este registro?");
+    if (r == true){
+        location.href = `deleta.php?id=${id}&tabela=documento`
+    }
+}
 </script>

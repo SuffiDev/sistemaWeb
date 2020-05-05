@@ -48,6 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <?php echo '<a class="navbar-brand">Olá, '.$_SESSION['nome'].' </a>' ?>
             </div>
             <!-- /.navbar-header -->
 

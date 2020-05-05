@@ -30,6 +30,7 @@
     <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
     <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <script src="js/maskInput.js"></script>    
+    <script src="js/jsForm.js"></script>    
 
     <!-- Page-Level Plugin Scripts - Blank -->
 
@@ -48,6 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <?php echo '<a class="navbar-brand">Olá, '.$_SESSION['nome'].' </a>' ?>
             </div>
             <!-- /.navbar-header -->
 
@@ -93,11 +95,11 @@
                             <form id="form_funcionario" action="cadastra_documento.php" method="POST"  enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Titulo</label>
-                                    <input type="text" class="form-control" name="documento" style="width:auto !important;" id="documento" placeholder="Titulo do Documento">                                    
+                                    <input type="text" class="form-control" name="documento" style="width:500px !important;" id="documento" placeholder="Titulo do Documento">                                    
                                 </div>
                                 <div class="form-group">
                                     <label>Colaborador</label>
-                                    <select class="form-control" multiple="multiple"  name="colaborador[]" style="width:auto !important;" id="colaborador" >                                    
+                                    <select class="form-control" multiple="multiple"  name="colaborador[]" style="height: 300px !important" id="colaborador" >                                    
                                     <?php
                                         $colaboradores = "SELECT * FROM tb_usuario where tipo= 'colaborador'";
                                         $result = mysqli_query($conn,$colaboradores);
@@ -109,9 +111,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Arquivo</label>
-                                    <input type="file" class="form-control" name="arquivo" style="width:auto !important;" id="arquivo" placeholder="Senha:">
+                                    <input type="file" class="form-control" name="arquivo" style="width:500px !important;" id="arquivo" placeholder="Senha:">
                                 </div>   
-                                <div class="progress" style="width:25%">
+                                <div class="progress" style="width:100%">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>                             
                                 <div style="float:left;">
